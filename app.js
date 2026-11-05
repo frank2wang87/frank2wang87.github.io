@@ -45,6 +45,24 @@ async function loadRecords(){
 }
 loadRecords().catch(()=>{$('result-count').textContent='已显示核验快照，筛选功能暂不可用';});
 loadContent().catch(()=>{});
+
+let checkingPublication=false;
+async function checkPublishedVersion(){
+ if(checkingPublication||document.visibilityState==='hidden'||!document.documentElement?.dataset?.siteVersion)return;
+ checkingPublication=true;
+ try{
+  const r=await fetch('version.json?check='+Date.now(),{cache:'no-store'});if(!r.ok)return;
+  const latest=await r.json();if(!/^[a-f0-9]{12}$/.test(latest.version))return;
+  const current=document.documentElement.dataset.siteVersion;
+  if(latest.version!==current){const url=new URL(window.location.href);if(url.searchParams.get('v')!==latest.version){url.searchParams.set('v',latest.version);window.location.replace(url.href);}}
+ }catch{}finally{checkingPublication=false;}
+}
+if(typeof window!=='undefined'){
+ checkPublishedVersion();
+ window.addEventListener('focus',checkPublishedVersion);
+ document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkPublishedVersion();});
+ window.setInterval(checkPublishedVersion,60000);
+}
 document.querySelectorAll('[data-type]').forEach(b=>b.addEventListener('click',()=>chooseType(b.dataset.type)));
 document.querySelectorAll('[data-category]').forEach(b=>b.addEventListener('click',()=>chooseCategory(b.dataset.category)));
 ['search','year','sort','patent-status'].forEach(id=>$(id).addEventListener(id==='search'?'input':'change',render));

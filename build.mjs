@@ -30,6 +30,7 @@ const siteVersion=digest.digest('hex').slice(0,12);
 html=html.replace(/<html\b[^>]*>/,`<html lang="zh-CN" data-site-version="${siteVersion}">`);
 for(const asset of ['style.css','records.js','content.js','app.js'])html=html.replace(new RegExp(`((?:src|href)=")${asset.replace('.', '\\.')}[^"\\s]*(")`,'g'),(_,a,b)=>a+asset+'?v='+siteVersion+b);
 fs.writeFileSync('index.html',html);
+fs.writeFileSync('version.json',JSON.stringify({version:siteVersion})+'\n');
 console.log('Site version:',siteVersion);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const audit=JSON.parse(fs.readFileSync('patent-audit.json','utf8'));

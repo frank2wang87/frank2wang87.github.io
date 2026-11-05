@@ -44,7 +44,7 @@
 
 ## 联系方式与 Research Interests
 
-- [编辑联系方式（含 Email）](https://github.com/frank2wang87/frank2wang87.github.io/edit/main/content/contact.json)：`email` 填写邮箱，例如 `"email": "name@example.com"`，主页会显示可点击的邮件链接。也兼容 `Email`。JSON 的引号需使用英文直引号 `"`。
+- [编辑联系方式（含 Email）](https://github.com/frank2wang87/frank2wang87.github.io/edit/main/content/contact.json)：`email` 填写邮箱，例如 `"email": "name@example.com"`，主页只显示可点击的信封图标，不显示邮箱地址文字。也兼容 `Email`。JSON 的引号需使用英文直引号 `"`。
 - [编辑 Research Interests](https://github.com/frank2wang87/frank2wang87.github.io/edit/main/content/interests.json)：这是侧边研究兴趣列表的唯一主编辑入口，基本信息模板不再重复设置该列表。每项可填英文名称 `name`、中文名称 `translation` 和具体说明 `description`。复制一个对象即可增加方向，项目之间保留逗号。
 
 下面是条目的填写格式（内容仅为填写示例）：
@@ -64,3 +64,5 @@
 ## 修改已提交但尚未看到更新
 
 提交资料后，进入 [Actions](https://github.com/frank2wang87/frank2wang87.github.io/actions)，等待 **Refresh portfolio content** 和随后的 **pages build and deployment** 均显示绿色成功，再刷新主页。浏览器仍显示旧页时可按 Ctrl+F5。更新会直接写入页面正文，JavaScript 加载失败也能看到已发布内容。
+
+公开页会在打开、切回标签页及停留期间检查已发布版本；检测到新版本时会自动加载对应页面。Email 只显示信封图标，点击后通过邮件客户端发送。
