@@ -6,11 +6,11 @@
 
 ## 基本信息
 
-请优先使用下面的基本信息统一模板。姓名、自我介绍、工作和教育经历在基本信息统一模板填写。Research Interests 使用独立的 content/interests.json，可新增条目并填写 description 说明；Email 在 content/contact.json 的 email 字段填写。【待填写】字段不会公开展示。
+请优先使用下面的基本信息统一模板。姓名、自我介绍、工作、教育经历及获奖信息在基本信息统一模板填写。Research Interests 使用独立的 content/interests.json，可新增条目并填写 description 说明；Email 在 content/contact.json 的 email 字段填写。【待填写】字段不会公开展示。
 
 | 内容 | 操作 |
 | --- | --- |
-| 基本信息统一模板（个人介绍、工作起止时间和方向、教育起止时间和专业） | [✏️ 编辑](https://github.com/frank2wang87/frank2wang87.github.io/edit/main/content/basic-info.md) · [🗑️ 删除](https://github.com/frank2wang87/frank2wang87.github.io/delete/main/content/basic-info.md) |
+| 基本信息统一模板（个人介绍、工作起止时间和方向、教育起止时间和专业、获奖信息） | [✏️ 编辑](https://github.com/frank2wang87/frank2wang87.github.io/edit/main/content/basic-info.md) · [🗑️ 删除](https://github.com/frank2wang87/frank2wang87.github.io/delete/main/content/basic-info.md) |
 | Research Interests / 研究兴趣（支持添加说明） | [✏️ 编辑](https://github.com/frank2wang87/frank2wang87.github.io/edit/main/content/interests.json) · [🗑️ 删除](https://github.com/frank2wang87/frank2wang87.github.io/delete/main/content/interests.json) |
 | 联系方式与链接（含 Email） | [✏️ 编辑](https://github.com/frank2wang87/frank2wang87.github.io/edit/main/content/contact.json) · [🗑️ 删除](https://github.com/frank2wang87/frank2wang87.github.io/delete/main/content/contact.json) |
 | 页面其他文案 | [✏️ 编辑](https://github.com/frank2wang87/frank2wang87.github.io/edit/main/content/site.json) · [🗑️ 删除](https://github.com/frank2wang87/frank2wang87.github.io/delete/main/content/site.json) |
@@ -113,11 +113,15 @@
 | 支持定浮点可重构的长度可配置的向量最大/最小值网络<br><code>CN102520903B</code> | 王东琳、<strong>汪涛</strong>、尹磊祖、谢少林 | 计算机体系结构 | 含有效授权 | [✏️ 编辑](https://github.com/frank2wang87/frank2wang87.github.io/edit/main/patents/family-46291846.json) · [🗑️ 删除](https://github.com/frank2wang87/frank2wang87.github.io/delete/main/patents/family-46291846.json) |
 | 支持定浮点可重构的向量长度可配置的向量点积累加网络<br><code>CN102520906A</code> | 王东琳、<strong>汪涛</strong>、尹磊祖 | 计算机体系结构 | 申请公开 | [✏️ 编辑](https://github.com/frank2wang87/frank2wang87.github.io/edit/main/patents/family-46291849.json) · [🗑️ 删除](https://github.com/frank2wang87/frank2wang87.github.io/delete/main/patents/family-46291849.json) |
 
+## 添加获奖信息
+
+打开基本信息统一模板，找到 “## 获奖信息”，复制空白的 “### 获奖信息 2” 区块，填写奖项、获奖时间、颁发单位和说明。只填写奖项与时间也可以；未填写奖项的空白条目及引用中的示例不会公开。删除整个区块即可移除对应奖项。
+
 ## 保存与删除
 
 - 修改后点击 **Commit changes… → Commit directly to the main branch → Commit changes**。等待 Pages 部署完成后刷新主页。
 - 删除某篇论文或某组专利，只需删除对应文件；不必再手动清理索引。页面加载时会跳过已删除文件。
 - 基本信息统一模板是中文 Markdown：替换冒号后的占位文字，个人介绍可直接写多段文字；未填写字段不公开。旧的 content/about.md、content/profile.json、content/experience.json 等分散文件已由统一模板接管；研究兴趣由 content/interests.json 独立控制。其他 JSON 文件需保留括号、引号与逗号。
-- 工作与教育经历在统一模板中按 ### 区块填写：可复制区块添加，删除整个区块即可移除该段经历。
+- 工作、教育经历与获奖信息在统一模板中按 ### 区块填写：可复制区块添加，删除整个区块即可移除该段经历。
 - 每组专利 JSON 的 category 字段可填写：大模型、计算机视觉、计算机体系结构、通用AI。每组使用一个主要分类，修改后网页分类会随之更新。提交历史和专利核验报告保留历史快照；删除展示资料并不清除 Git 历史。
 - 提交 main 后会自动重新生成页面正文与管理清单并发布。请在 Actions 中等待 Refresh portfolio content 和 pages build and deployment 成功，再刷新主页。
