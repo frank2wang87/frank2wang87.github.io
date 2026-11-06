@@ -46,6 +46,23 @@ async function loadRecords(){
 loadRecords().catch(()=>{$('result-count').textContent='已显示核验快照，筛选功能暂不可用';});
 loadContent().catch(()=>{});
 
+if (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('stats') === '1') {
+ const counterScript = document.querySelector('script[data-goatcounter]');
+ if (counterScript) {
+  const dashboard = new URL('/', counterScript.dataset.goatcounter);
+  const panel = document.createElement('section');
+  panel.id = 'visitor-stats';
+  panel.className = 'section';
+  panel.setAttribute('aria-labelledby', 'visitor-stats-heading');
+  panel.innerHTML = `<h2 id="visitor-stats-heading">访问统计</h2>
+   <p>登录 GoatCounter 后查看。<a class="text-link" target="_blank" rel="noopener noreferrer">在统计后台打开 ↗</a></p>
+   <iframe title="GoatCounter 访问统计" style="display:block;width:100%;height:75vh;min-height:420px;border:1px solid #dce0d8"></iframe>`;
+  panel.querySelector('a').href = dashboard.href;
+  panel.querySelector('iframe').src = dashboard.href;
+  $('research').before(panel);
+ }
+}
+
 let checkingPublication=false;
 async function checkPublishedVersion(){
  if(checkingPublication||document.visibilityState==='hidden'||!document.documentElement?.dataset?.siteVersion)return;
