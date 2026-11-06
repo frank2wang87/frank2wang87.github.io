@@ -1,6 +1,6 @@
 # 主页内容管理
 
-[查看公开主页](https://frank2wang87.github.io/) · [返回仓库首页](https://github.com/frank2wang87/frank2wang87.github.io) · [访问统计（登录后查看）](https://frank2wang87.goatcounter.com)
+[查看公开主页](https://frank2wang87.github.io/) · [返回仓库首页](https://github.com/frank2wang87/frank2wang87.github.io) · [主页访问统计](https://frank2wang87.github.io/?stats=1#visitor-stats) · [访问统计（登录后查看）](https://frank2wang87.goatcounter.com)
 
 请登录 frank2wang87。下列操作通过 GitHub 编辑器执行，只有拥有本仓库写入权限的账号才能将修改保存到本站。删除按钮会先进入 GitHub 确认页面，不会直接删除。
 
