@@ -47,18 +47,92 @@ loadRecords().catch(()=>{$('result-count').textContent='已显示核验快照，
 loadContent().catch(()=>{});
 
 if (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('stats') === '1') {
- const counterScript = document.querySelector('script[data-goatcounter]');
+ const counterScript = document.querySelector('#goatcounter-config');
  if (counterScript) {
   const dashboard = new URL('/', counterScript.dataset.goatcounter);
+  const totals = new URL('/api/v0/stats/total', dashboard);
+  // Analytics started on 2026-11-06. Include the full first day.
+  totals.searchParams.set('start', '2026-11-05T16:00:00Z');
   const panel = document.createElement('section');
   panel.id = 'visitor-stats';
-  panel.className = 'section';
+  panel.className = 'section visitor-stats';
   panel.setAttribute('aria-labelledby', 'visitor-stats-heading');
   panel.innerHTML = `<h2 id="visitor-stats-heading">访问统计</h2>
-   <p>登录 GoatCounter 后查看。<a class="text-link" target="_blank" rel="noopener noreferrer">在统计后台打开 ↗</a></p>
-   <iframe title="GoatCounter 访问统计" style="display:block;width:100%;height:75vh;min-height:420px;border:1px solid #dce0d8"></iframe>`;
-  panel.querySelector('a').href = dashboard.href;
-  panel.querySelector('iframe').src = dashboard.href;
+   <form class="stats-unlock" autocomplete="off">
+    <label>GoatCounter 只读统计密钥 <input type="password" required autocomplete="off" spellcheck="false"></label>
+    <button class="button" type="submit">查看访问量</button>
+    <a class="text-link stats-backend" target="_blank" rel="noopener noreferrer">打开 GoatCounter ↗</a>
+   </form>
+   <p class="stats-status" role="status"></p>
+   <div class="stats-summary" hidden>
+    <p><span>累计访问量</span><strong aria-live="polite">—</strong></p>
+    <button class="button stats-details-toggle" type="button" aria-expanded="false" aria-controls="visit-details">详细信息</button>
+   </div>
+   <div id="visit-details" class="stats-details" hidden>
+    <p>最近 7 天有访问的时段，按 GoatCounter 后台时区显示。</p>
+    <table><thead><tr><th scope="col">访问时段</th><th scope="col">访问量</th></tr></thead><tbody></tbody></table>
+    <p class="stats-empty" hidden>最近 7 天没有访问记录。</p>
+    <p>如需逐条时间，可在 GoatCounter 开启 Individual pageviews 后导出。<a class="text-link stats-backend" target="_blank" rel="noopener noreferrer">打开统计后台 ↗</a></p>
+   </div>`;
+  panel.querySelectorAll('.stats-backend').forEach(link => { link.href = dashboard.href; });
+  const form = panel.querySelector('form');
+  const input = form.querySelector('input');
+  const submit = form.querySelector('button');
+  const status = panel.querySelector('.stats-status');
+  const summary = panel.querySelector('.stats-summary');
+  const details = panel.querySelector('.stats-details');
+  const toggle = panel.querySelector('.stats-details-toggle');
+  toggle.addEventListener('click', () => {
+   details.hidden = !details.hidden;
+   toggle.setAttribute('aria-expanded', String(!details.hidden));
+  });
+  form.addEventListener('submit', async event => {
+   event.preventDefault();
+   const key = input.value.trim();
+   input.value = '';
+   if (!key || submit.disabled) return;
+   submit.disabled = true;
+   status.textContent = '正在读取访问量…';
+   try {
+    const response = await fetch(totals, {
+     headers: { Authorization: 'Bearer ' + key, 'Content-Type': 'application/json' },
+     credentials: 'omit', redirect: 'error', cache: 'no-store',
+     signal: AbortSignal.timeout(15000)
+    });
+    if (response.status === 401 || response.status === 403) {
+     status.textContent = '请检查密钥是否有效，并确认已勾选 Read statistics。';
+     return;
+    }
+    if (!response.ok) throw new Error('Statistics request failed');
+    const data = await response.json();
+    if (!Number.isSafeInteger(data.total) || data.total < 0) throw new Error('Invalid total');
+    const rows = [];
+    const days = Array.isArray(data.stats) ? data.stats.slice(-7).reverse() : [];
+    for (const day of days) {
+     if (!Array.isArray(day.hourly)) continue;
+     for (let hour = 23; hour >= 0; hour--) {
+      const count = day.hourly[hour];
+      if (!Number.isSafeInteger(count) || count <= 0) continue;
+      const row = document.createElement('tr');
+      const timeCell = row.insertCell();
+      timeCell.textContent = day.day + ' ' + String(hour).padStart(2, '0') + ':00';
+      row.insertCell().textContent = count.toLocaleString('zh-CN');
+      rows.push(row);
+     }
+    }
+    details.querySelector('tbody').replaceChildren(...rows);
+    details.querySelector('table').hidden = rows.length === 0;
+    details.querySelector('.stats-empty').hidden = rows.length > 0;
+    summary.querySelector('strong').textContent = data.total.toLocaleString('zh-CN');
+    form.hidden = true;
+    summary.hidden = false;
+    status.textContent = '';
+   } catch {
+    status.textContent = '暂时无法读取访问量，请重试或打开统计后台。';
+   } finally {
+    submit.disabled = false;
+   }
+  });
   $('research').before(panel);
  }
 }

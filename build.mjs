@@ -36,7 +36,7 @@ if (analyticsAccount && !/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(analytics
 const analyticsDashboard = analyticsAccount ? `https://${analyticsAccount}.goatcounter.com` : '';
 html = html.replace(/<!-- ANALYTICS:START -->[\s\S]*?<!-- ANALYTICS:END -->\r?\n?/g, '');
 if (analyticsDashboard) {
-  html = html.replace('</body>', `<!-- ANALYTICS:START -->\n<script data-goatcounter="${analyticsDashboard}/count" async src="https://gc.zgo.at/count.js"></script>\n<!-- ANALYTICS:END -->\n</body>`);
+  html = html.replace('</body>', `<!-- ANALYTICS:START -->\n<script id="goatcounter-config" data-goatcounter="${analyticsDashboard}/count">\nif (new URLSearchParams(location.search).get('stats') !== '1') {\n  const tracker = document.createElement('script');\n  tracker.src = 'https://gc.zgo.at/count.js';\n  tracker.async = true;\n  tracker.dataset.goatcounter = document.currentScript.dataset.goatcounter;\n  document.body.append(tracker);\n}\n</script>\n<!-- ANALYTICS:END -->\n</body>`);
 }
 fs.writeFileSync('index.html',html);
 fs.writeFileSync('version.json',JSON.stringify({version:siteVersion})+'\n');

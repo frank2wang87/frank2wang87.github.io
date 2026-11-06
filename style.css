@@ -17,3 +17,14 @@
 .awards-block{margin-top:38px;padding-top:30px;border-top:1px solid #dce0d8}.awards-block .timeline{max-width:820px}.awards-block .timeline h4{font-size:17px;line-height:1.6}
 
 .recruitment-note{font-size:15px;font-weight:600;line-height:1.8;color:#b02a37;margin:0 0 18px;max-width:40em}
+
+.visitor-stats .stats-unlock,.visitor-stats .stats-summary{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:18px}
+.visitor-stats .stats-unlock label{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.visitor-stats input{max-width:100%;padding:7px 10px;border:1px solid #dce0d8;border-radius:4px;background:#fff}
+.visitor-stats .stats-summary p{display:flex;align-items:baseline;gap:10px;margin:0}
+.visitor-stats .stats-summary strong{font-size:2rem;line-height:1.2}
+.visitor-stats .stats-status:empty{display:none}
+.visitor-stats .stats-details{margin-top:18px}
+.visitor-stats table{border-collapse:collapse;min-width:min(100%,300px)}
+.visitor-stats th,.visitor-stats td{padding:6px 14px 6px 0;text-align:left;border-bottom:1px solid #dce0d8}
+.visitor-stats [hidden]{display:none}
