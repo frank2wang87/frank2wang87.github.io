@@ -38,6 +38,13 @@ async function loadRecords(){
  p.publications=[...papers,...patents];profile=p;
  if(!p.metrics){const n=$('scholar-metrics');if(n)n.hidden=true;}
  const rows=visibleRecords();$('record-count').textContent=rows.length;$('citation-count').textContent=Number(p.metrics?.citations||0).toLocaleString('en-US');$('h-index').textContent=p.metrics?.hIndex||'—';
+ const sync = p.metricsSync || {};
+ const stamp = sync.succeededAt || p.retrievedAt;
+ const note = document.getElementById('scholar-sync-note');
+ if (note) {
+  const date = stamp ? new Intl.DateTimeFormat('zh-CN', {timeZone:'Asia/Shanghai', dateStyle:'short', timeStyle:'short'}).format(new Date(stamp)) : '待同步';
+  note.textContent = (sync.status === 'error' ? '同步暂未成功 · 上次更新 ' : '最近更新 ') + date;
+ }
  for(const [id,type] of [['paper-n','paper'],['patent-n','patent'],['all-n','all']])$(id).textContent=type==='all'?rows.length:rows.filter(r=>r.type===type).length;
  for(const [i,category] of PATENT_CATEGORIES.entries())$('category-count-'+i).textContent=rows.filter(r=>r.type==='patent'&&r.category===category).length;
  const years=[...new Set(rows.map(r=>r.year).filter(Boolean))].sort((a,b)=>b-a);years.forEach(y=>$('year').add(new Option(y,y)));if(rows.some(r=>!r.year))$('year').add(new Option('年份未列出','unknown'));

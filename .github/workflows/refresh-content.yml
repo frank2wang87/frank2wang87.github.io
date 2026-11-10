@@ -10,8 +10,11 @@ on:
       - 'profile.json'
       - '*.js'
       - '*.mjs'
+      - 'sync_scholar.py'
       - '*.css'
       - '.github/workflows/refresh-content.yml'
+  schedule:
+    - cron: '23 22 * * *'
   workflow_dispatch:
 
 permissions:
@@ -32,6 +35,12 @@ jobs:
         with:
           ref: main
 
+      - name: Sync Google Scholar metrics
+        id: scholar
+        if: github.event_name != 'push' || contains(github.event.head_commit.message, '[sync-scholar]')
+        continue-on-error: true
+        run: python3 sync_scholar.py
+
       - name: Generate the page and management lists
         run: node build.mjs
 
@@ -39,7 +48,7 @@ jobs:
         id: save
         shell: bash
         run: |
-          git add -- index.html MANAGE.md patent-review.html version.json
+          git add -- profile.json index.html MANAGE.md patent-review.html version.json
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
@@ -55,3 +64,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: gh api --method POST "repos/${GITHUB_REPOSITORY}/pages/builds" --silent
+
+      - name: Report a failed Scholar refresh
+        if: steps.scholar.outcome == 'failure'
+        run: exit 1

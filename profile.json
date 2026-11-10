@@ -489,7 +489,7 @@
   "experience": [],
   "patents": [],
   "metrics": {
-    "citations": "1567",
+    "citations": "1577",
     "hIndex": "18",
     "i10Index": "20"
   },
@@ -860,5 +860,11 @@
       "metadataTruncated": false
     }
   ],
-  "patentIndex": "patents/index.json"
+  "patentIndex": "patents/index.json",
+  "metricsSync": {
+    "status": "success",
+    "attemptedAt": "2026-11-10T06:37:51+00:00",
+    "succeededAt": "2026-11-10T06:37:51+00:00",
+    "error": ""
+  }
 }

@@ -24,6 +24,15 @@ html=html.replace(/<!-- RECORDS:START -->[\s\S]*?<!-- RECORDS:END -->/,'<!-- REC
 for(const [id,n] of [['record-count',rows.length],['all-n',rows.length],['paper-n',rows.filter(r=>r.type==='paper').length],['patent-n',patents.filter(p=>p.status!=='excluded').length]])html=html.replace(new RegExp(`(id="${id}">)[^<]*`),'$1'+n);
 for(const [i,category] of ['大模型','计算机视觉','计算机体系结构','通用AI'].entries())html=html.replace(new RegExp(`(id="category-count-${i}">)[^<]*`),'$1'+patents.filter(p=>p.status!=='excluded'&&p.category===category).length);
 html=html.replace(/(<p id="result-count"[^>]*>)[^<]*/,'$1显示 '+rows.length+' 条记录');
+// Render metrics into the published HTML as well as the browser view.
+for (const [id, value] of [['citation-count', Number(profile.metrics?.citations || 0).toLocaleString('en-US')], ['h-index', profile.metrics?.hIndex ?? '—']]) {
+  html = html.replace(new RegExp(`(id="${id}">)[^<]*`), (_, prefix) => prefix + value);
+}
+const metricsSync = profile.metricsSync || {};
+const updatedAt = metricsSync.succeededAt || profile.retrievedAt;
+const metricsDate = updatedAt ? new Intl.DateTimeFormat('zh-CN', {timeZone:'Asia/Shanghai', dateStyle:'short', timeStyle:'short'}).format(new Date(updatedAt)) : '待同步';
+const metricsNote = (metricsSync.status === 'error' ? '同步暂未成功 · 上次更新 ' : '最近更新 ') + metricsDate;
+html = html.replace(/<div class="metric-note">[\s\S]*?<\/div>/, `<div class="metric-note"><span class="dot"></span><p>Google Scholar<small id="scholar-sync-note">${metricsNote}</small></p></div>`);
 const sourceFiles=['records.js','content.js','app.js','style.css','profile.json',...fs.readdirSync('content').sort().map(f=>'content/'+f),...index.files,...optionalJson('publications/index.json',{files:[]}).files].filter(f=>fs.existsSync(f));
 const digest=crypto.createHash('sha256');for(const f of sourceFiles){digest.update(f);digest.update(fs.readFileSync(f));}
 const siteVersion=digest.digest('hex').slice(0,12);
