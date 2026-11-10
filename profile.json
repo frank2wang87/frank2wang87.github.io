@@ -862,9 +862,9 @@
   ],
   "patentIndex": "patents/index.json",
   "metricsSync": {
-    "status": "success",
-    "attemptedAt": "2026-11-10T06:37:51+00:00",
+    "status": "error",
+    "attemptedAt": "2026-11-10T06:43:44+00:00",
     "succeededAt": "2026-11-10T06:37:51+00:00",
-    "error": ""
+    "error": "HTTP Error 403: Forbidden"
   }
 }
