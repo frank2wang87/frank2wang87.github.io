@@ -28,11 +28,7 @@ html=html.replace(/(<p id="result-count"[^>]*>)[^<]*/,'$1显示 '+rows.length+' 
 for (const [id, value] of [['citation-count', Number(profile.metrics?.citations || 0).toLocaleString('en-US')], ['h-index', profile.metrics?.hIndex ?? '—']]) {
   html = html.replace(new RegExp(`(id="${id}">)[^<]*`), (_, prefix) => prefix + value);
 }
-const metricsSync = profile.metricsSync || {};
-const updatedAt = metricsSync.succeededAt || profile.retrievedAt;
-const metricsDate = updatedAt ? new Intl.DateTimeFormat('zh-CN', {timeZone:'Asia/Shanghai', dateStyle:'short', timeStyle:'short'}).format(new Date(updatedAt)) : '待同步';
-const metricsNote = (metricsSync.status === 'error' ? '同步暂未成功 · 上次更新 ' : '最近更新 ') + metricsDate;
-html = html.replace(/<div class="metric-note">[\s\S]*?<\/div>/, `<div class="metric-note"><span class="dot"></span><p>Google Scholar<small id="scholar-sync-note">${metricsNote}</small></p></div>`);
+html = html.replace(/<div class="metric-note">[\s\S]*?<\/div>/g, '');
 const sourceFiles=['records.js','content.js','app.js','style.css','profile.json',...fs.readdirSync('content').sort().map(f=>'content/'+f),...index.files,...optionalJson('publications/index.json',{files:[]}).files].filter(f=>fs.existsSync(f));
 const digest=crypto.createHash('sha256');for(const f of sourceFiles){digest.update(f);digest.update(fs.readFileSync(f));}
 const siteVersion=digest.digest('hex').slice(0,12);
