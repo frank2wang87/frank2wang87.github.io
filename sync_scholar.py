@@ -1,12 +1,20 @@
 """Refresh all-time Scholar metrics, keeping the last snapshot on failure."""
 
 import json
+import os
 import re
 from datetime import datetime, timezone
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import parse_qs, urlparse
-from urllib.request import Request, urlopen
+from urllib.error import HTTPError
+from urllib.parse import parse_qs, urlencode, urlparse
+from urllib.request import HTTPRedirectHandler, Request, build_opener, urlopen
+
+
+class NoRedirect(HTTPRedirectHandler):
+    # Requests with an API key must stay on the configured API origin.
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        return None
 
 
 class MetricsTable(HTMLParser):
@@ -53,10 +61,38 @@ def parse_metrics(html):
         if not re.fullmatch(r'[0-9][0-9,\s]*', value):
             raise ValueError('Scholar returned an invalid statistic')
         values.append(int(re.sub(r'[,\s]', '', value)))
-    citations, h_index, i10_index = values
+    return validate_metrics(*values)
+
+
+def validate_metrics(citations, h_index, i10_index):
+    values = (citations, h_index, i10_index)
+    if any(type(value) is not int or value < 0 for value in values):
+        raise ValueError('Scholar returned an invalid statistic')
     if h_index > citations or i10_index * 10 > citations:
         raise ValueError('Scholar statistics are inconsistent')
     return dict(zip(('citations', 'hIndex', 'i10Index'), map(str, values)))
+
+
+def fetch_serpapi_metrics(author, api_key):
+    query = urlencode({
+        'engine': 'google_scholar_author',
+        'author_id': author,
+        'hl': 'en',
+        'no_cache': 'true',
+        'api_key': api_key,
+    })
+    try:
+        opener = build_opener(NoRedirect())
+        with opener.open('https://serpapi.com/search.json?' + query, timeout=45) as response:
+            result = json.load(response)
+        if result['search_metadata']['status'] != 'Success' or result['search_parameters']['author_id'] != author:
+            raise ValueError('Unexpected fallback result')
+        totals = {name: values['all'] for row in result['cited_by']['table'] for name, values in row.items()}
+        return validate_metrics(totals['citations'], totals['h_index'], totals['i10_index'])
+    except Exception as error:
+        # The request URL and provider messages can contain the API key.
+        detail = f'HTTP {error.code}' if isinstance(error, HTTPError) else type(error).__name__
+        raise ValueError(f'Scholar fallback failed ({detail})') from None
 
 
 def main():
@@ -77,10 +113,19 @@ def main():
             f'https://scholar.google.com/citations?user={author}&hl=en',
             headers={'User-Agent': 'Mozilla/5.0', 'Accept-Language': 'en'},
         )
-        with urlopen(request, timeout=30) as response:
-            metrics = parse_metrics(response.read().decode('utf-8'))
+        source = 'google-scholar'
+        try:
+            with urlopen(request, timeout=30) as response:
+                metrics = parse_metrics(response.read().decode('utf-8'))
+        except HTTPError as error:
+            api_key = os.environ.get('SERPAPI_API_KEY', '').strip()
+            if error.code not in (403, 429) or not api_key:
+                raise
+            print(f'Scholar returned HTTP {error.code}; trying the configured fallback')
+            metrics = fetch_serpapi_metrics(author, api_key)
+            source = 'serpapi'
         profile['metrics'] = {**profile.get('metrics', {}), **metrics}
-        sync.update(status='success', succeededAt=now, error='')
+        sync.update(status='success', succeededAt=now, source=source, error='')
         print(f"Scholar metrics updated: citations={metrics['citations']}, h-index={metrics['hIndex']}")
     except Exception as error:
         sync.update(status='error', error=str(error))
@@ -94,4 +139,3 @@ def main():
 
 if __name__ == '__main__':
     raise SystemExit(main())
-
