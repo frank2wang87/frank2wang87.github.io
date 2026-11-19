@@ -34,7 +34,8 @@ for (const [i, summary] of categorySummaries.entries()) {
 const resultLabel = vm.runInContext('researchCount(rows)', context);
 html = html.replace(/(<p id="result-count"[^>]*>)[^<]*/, (_, prefix) => prefix + resultLabel);
 html = html.replace('论文 + 专利同族','论文 + 各地区专利申请');
-html = html.replace(/<p class="patent-help">[^<]*<\/p>/, '<p class="patent-help">按独立申请逐件展示。同一技术先列中文国内专利，再分别列出英文海外专利，标明地区、申请号和各自状态。同一申请的公开与授权版本计为一件，分案申请分别计件。</p>');
+html = html.replace(/<p class="patent-help">[\s\S]*?<\/p>/g, '');
+html = html.replace(/<p class="source-note">[\s\S]*?<\/p>/g, '<p class="source-note">论文来源：<a href="https://scholar.google.com/citations?user=QIy6O2EAAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener">Google Scholar</a> · 专利来源：<a href="https://patents.google.com/" target="_blank" rel="noopener">Google Patents</a></p>');
 // Render metrics into the published HTML as well as the browser view.
 for (const [id, value] of [['citation-count', Number(profile.metrics?.citations || 0).toLocaleString('en-US')], ['h-index', profile.metrics?.hIndex ?? '—']]) {
   html = html.replace(new RegExp(`(id="${id}">)[^<]*`), (_, prefix) => prefix + value);

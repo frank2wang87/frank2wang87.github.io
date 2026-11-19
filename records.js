@@ -26,8 +26,7 @@ function patentRegionSummary(patents) {
 function researchCount(rows) {
  const papers = rows.filter(row => row.type === 'paper').length;
  const patents = rows.filter(row => row.type === 'patent');
- const families = new Set(patents.map(p => p.familyId || p.id)).size;
- return [papers ? `论文 ${papers} 篇` : '',patents.length ? `专利 ${patentRegionSummary(patents)}（${families} 个同族）` : ''].filter(Boolean).join(' · ');
+ return [papers ? `论文 ${papers} 篇` : '',patents.length ? `专利 ${patentRegionSummary(patents)}` : ''].filter(Boolean).join(' · ');
 }
 
 function patentDisplayRecords(patent) {
@@ -62,7 +61,7 @@ function recordMarkup(p){
  const authors=escapeHtml(p.authors).replace(/\bT Wang\b|\bTao Wang\b|\bWang Tao\b|汪涛/g,'<strong>$&</strong>');
  if(p.type==='patent'){
   const members=p.members||[];
-  return `<article class="publication patent-record" id="${escapeHtml(p.id)}" data-family="${escapeHtml(p.familyId)}" data-region="${escapeHtml(p.region)}"><div class="pub-year">${escapeHtml(p.year||'—')}<small>${escapeHtml((p.applicationDate||'').slice(5))}</small></div><div><h3>${external(p.url,escapeHtml(p.title))}</h3><p class="authors">发明人：${authors}</p><p class="venue">${escapeHtml((p.applicants||[]).join('；'))}</p><div class="patent-meta"><span class="status-badge ${p.status==='active'?'status-active':'status-pending'}">${escapeHtml(p.statusLabel)}</span><span class="region-badge">${p.region==='CN'?'国内':'海外'} · ${escapeHtml(PATENT_REGION_NAMES[p.region] || p.region)}</span>${p.category?`<span class="category-badge">${escapeHtml(p.category)}</span>`:''}<span>${escapeHtml(p.dateBasis)}：${escapeHtml(p.applicationDate)}</span></div><p class="venue">申请号：${escapeHtml(p.application)}</p><div class="pub-bottom">${members.map(member=>external(member.sourceUrl,escapeHtml(member.publication)+' ↗')).join(' · ')}<span class="cite">状态核对：${escapeHtml(p.checkedAt)}</span></div></div><div class="pub-arrow">${external(p.url,'↗')}</div></article>`;
+  return `<article class="publication patent-record" id="${escapeHtml(p.id)}" data-family="${escapeHtml(p.familyId)}" data-region="${escapeHtml(p.region)}"><div class="pub-year">${escapeHtml(p.year||'—')}<small>${escapeHtml((p.applicationDate||'').slice(5))}</small></div><div><h3>${external(p.url,escapeHtml(p.title))}</h3><p class="authors">发明人：${authors}</p><p class="venue">${escapeHtml((p.applicants||[]).join('；'))}</p><div class="patent-meta"><span class="status-badge ${p.status==='active'?'status-active':'status-pending'}">${escapeHtml(p.statusLabel.replace(/（来源[^）]*）/g,''))}</span><span class="region-badge">${p.region==='CN'?'国内':'海外'} · ${escapeHtml(PATENT_REGION_NAMES[p.region] || p.region)}</span>${p.category?`<span class="category-badge">${escapeHtml(p.category)}</span>`:''}<span>${escapeHtml(p.dateBasis)}：${escapeHtml(p.applicationDate)}</span></div><p class="venue">申请号：${escapeHtml(p.application)}</p><div class="pub-bottom">${members.map(member=>external(member.sourceUrl,escapeHtml(member.publication)+' ↗')).join(' · ')}</div></div><div class="pub-arrow">${external(p.url,'↗')}</div></article>`;
  }
  const details=p.details||{};
  const publicationName = ['研讨会论文','会议','Conference','Booktitle','期刊','Journal','图书','Book','来源','Source']
