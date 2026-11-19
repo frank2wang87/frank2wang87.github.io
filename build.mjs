@@ -35,6 +35,7 @@ const resultLabel = vm.runInContext('researchCount(rows)', context);
 html = html.replace(/(<p id="result-count"[^>]*>)[^<]*/, (_, prefix) => prefix + resultLabel);
 html = html.replace('论文 + 专利同族','论文 + 各地区专利申请');
 html = html.replace(/<p class="patent-help">[\s\S]*?<\/p>/g, '');
+html = html.replace(/<a\b[^>]*href="patent-review\.html"[^>]*>[\s\S]*?<\/a>/g, '');
 html = html.replace(/<p class="source-note">[\s\S]*?<\/p>/g, '<p class="source-note">论文来源：<a href="https://scholar.google.com/citations?user=QIy6O2EAAAAJ&amp;hl=zh-CN" target="_blank" rel="noopener">Google Scholar</a> · 专利来源：<a href="https://patents.google.com/" target="_blank" rel="noopener">Google Patents</a></p>');
 // Render metrics into the published HTML as well as the browser view.
 for (const [id, value] of [['citation-count', Number(profile.metrics?.citations || 0).toLocaleString('en-US')], ['h-index', profile.metrics?.hIndex ?? '—']]) {

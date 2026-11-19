@@ -48,7 +48,7 @@ async function loadRecords(){
  const years=[...new Set(rows.map(r=>r.year).filter(Boolean))].sort((a,b)=>b-a);years.forEach(y=>$('year').add(new Option(y,y)));if(rows.some(r=>!r.year))$('year').add(new Option('年份未列出','unknown'));
  chooseType(activeType);
 }
-loadRecords().catch(()=>{$('result-count').textContent='已显示核验快照，筛选功能暂不可用';});
+loadRecords().catch(()=>{$('result-count').textContent='已显示现有内容，筛选功能暂不可用';});
 loadContent().catch(()=>{});
 
 if (typeof window !== 'undefined' && new URLSearchParams(window.location.search).get('stats') === '1') {
