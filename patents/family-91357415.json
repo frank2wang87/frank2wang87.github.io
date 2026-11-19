@@ -62,6 +62,46 @@
       "checkedAt": "2026-11-05",
       "statusLabel": "申请公开（来源 Pending）",
       "superseded": false
+    },
+    {
+      "publication": "US20250298753A1",
+      "application": "US19/230,467",
+      "inventors": [
+        "Tao Wang",
+        "Jinxing Ji"
+      ],
+      "assignees": [
+        "Huawei Technologies Co Ltd"
+      ],
+      "status": "Pending",
+      "filingDate": "2025-06-06",
+      "priorityDate": "2022-12-09",
+      "publicationDate": "2025-09-25",
+      "sourceUrl": "https://patents.google.com/patent/US20250298753A1/en",
+      "sourceName": "Google Patents",
+      "checkedAt": "2026-11-19",
+      "superseded": false,
+      "statusLabel": "申请公开（来源 Pending）"
+    },
+    {
+      "publication": "EP4625187A1",
+      "application": "EP23899595.5A",
+      "inventors": [
+        "Tao Wang",
+        "Jinxing Ji"
+      ],
+      "assignees": [
+        "Huawei Technologies Co Ltd"
+      ],
+      "status": "Pending",
+      "filingDate": "2023-10-13",
+      "priorityDate": "2022-12-09",
+      "publicationDate": "2025-10-01",
+      "sourceUrl": "https://patents.google.com/patent/EP4625187A1/en",
+      "sourceName": "Google Patents",
+      "checkedAt": "2026-11-19",
+      "superseded": false,
+      "statusLabel": "申请公开（来源 Pending）"
     }
   ],
   "familyIds": [

@@ -21,9 +21,19 @@ for(const [tag,id,key] of [['header','site-header','header'],['section','about',
 const title=[content.profile?.name,content.profile?.nameEn,'个人主页'].filter(Boolean).join(' · ');html=html.replace(/<title>.*?<\/title>/,'<title>'+title.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))+'</title>');
 if(!html.includes('<!-- RECORDS:START -->'))html=html.replace(/<div id="publication-list" class="publication-list">[\s\S]*?<\/div><p class="source-note">/, '<div id="publication-list" class="publication-list"><!-- RECORDS:START --><!-- RECORDS:END --></div><p class="source-note">');
 html=html.replace(/<!-- RECORDS:START -->[\s\S]*?<!-- RECORDS:END -->/,'<!-- RECORDS:START -->'+markup+'<!-- RECORDS:END -->');
-for(const [id,n] of [['record-count',rows.length],['all-n',rows.length],['paper-n',rows.filter(r=>r.type==='paper').length],['patent-n',patents.filter(p=>p.status!=='excluded').length]])html=html.replace(new RegExp(`(id="${id}">)[^<]*`),'$1'+n);
-for(const [i,category] of ['大模型','计算机视觉','计算机体系结构','通用AI'].entries())html=html.replace(new RegExp(`(id="category-count-${i}">)[^<]*`),'$1'+patents.filter(p=>p.status!=='excluded'&&p.category===category).length);
-html=html.replace(/(<p id="result-count"[^>]*>)[^<]*/,'$1显示 '+rows.length+' 条记录');
+
+const patentTotal = vm.runInContext('new Set(rows.filter(row => row.type === "patent").flatMap(patent => patentApplications(patent).map(application => application.key))).size', context);
+for (const [id, count] of [['record-count',papers.length+patentTotal],['all-n',papers.length+patentTotal],['paper-n',papers.length],['patent-n',patentTotal]]) {
+ html = html.replace(new RegExp(`(id="${id}">)[^<]*`), (_, prefix) => prefix + count);
+}
+const categorySummaries = vm.runInContext('PATENT_CATEGORIES.map(category => patentRegionSummary(rows.filter(row => row.type === "patent" && row.category === category)))', context);
+for (const [i, summary] of categorySummaries.entries()) {
+ html = html.replace(new RegExp(`(id="category-count-${i}">)[^<]*`), (_, prefix) => prefix + summary);
+}
+const resultLabel = vm.runInContext('researchCount(rows)', context);
+html = html.replace(/(<p id="result-count"[^>]*>)[^<]*/, (_, prefix) => prefix + resultLabel);
+html = html.replace('论文 + 专利同族','论文 + 各地区专利申请');
+html = html.replace(/<p class="patent-help">[^<]*<\/p>/, '<p class="patent-help">按独立申请号计件，中国申请归国内，美国、欧洲及 PCT 国际申请归海外。同一申请的公开与授权版本计为一件，分案申请分别计件。列表按同族展示，展开可查看各地区申请。</p>');
 // Render metrics into the published HTML as well as the browser view.
 for (const [id, value] of [['citation-count', Number(profile.metrics?.citations || 0).toLocaleString('en-US')], ['h-index', profile.metrics?.hIndex ?? '—']]) {
   html = html.replace(new RegExp(`(id="${id}">)[^<]*`), (_, prefix) => prefix + value);

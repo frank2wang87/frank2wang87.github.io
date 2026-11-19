@@ -112,6 +112,19 @@
       "checkedAt": "2026-11-05",
       "statusLabel": "已有授权版本",
       "superseded": true
+    },
+    {
+      "publication": "EP3352132B1",
+      "application": "EP16858624.6A",
+      "status": "Active",
+      "filingDate": "2016-05-04",
+      "sourceUrl": "https://patents.google.com/patent/EP3352132B1/en",
+      "sourceName": "Google Patents 同族记录",
+      "checkedAt": "2026-11-05",
+      "superseded": false,
+      "relationEvidence": "https://patents.google.com/patent/CN106651748A/en#familyToFamilyCitations",
+      "sourceNotes": "申请号及状态据 CN106651748A 的同族地区记录。",
+      "statusLabel": "有效授权（来源 Active）"
     }
   ],
   "familyIds": [

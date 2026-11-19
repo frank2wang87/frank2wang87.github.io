@@ -131,6 +131,19 @@
       "checkedAt": "2026-11-05",
       "statusLabel": "已有授权版本",
       "superseded": true
+    },
+    {
+      "publication": "EP3370150B1",
+      "application": "EP16867889.4A",
+      "status": "Active",
+      "filingDate": "2016-11-09",
+      "sourceUrl": "https://patents.google.com/patent/EP3370150B1/en",
+      "sourceName": "Google Patents 同族记录",
+      "checkedAt": "2026-11-05",
+      "superseded": false,
+      "relationEvidence": "https://patents.google.com/patent/CN107250982A/en#familyToFamilyCitations",
+      "sourceNotes": "申请号及状态据 CN107250982A 的同族地区记录。",
+      "statusLabel": "有效授权（来源 Active）"
     }
   ],
   "familyIds": [

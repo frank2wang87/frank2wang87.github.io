@@ -114,6 +114,32 @@
       "checkedAt": "2026-11-05",
       "statusLabel": "已有授权版本",
       "superseded": true
+    },
+    {
+      "publication": "EP3980965B1",
+      "application": "EP19756261.4A",
+      "status": "Active",
+      "filingDate": "2019-06-25",
+      "sourceUrl": "https://patents.google.com/patent/EP3980965B1/en",
+      "sourceName": "Google Patents 同族记录",
+      "checkedAt": "2026-11-05",
+      "superseded": false,
+      "relationEvidence": "https://patents.google.com/patent/CN114008661A/en#familyToFamilyCitations",
+      "sourceNotes": "申请号及状态据 CN114008661A 的同族地区记录。",
+      "statusLabel": "有效授权（来源 Active）"
+    },
+    {
+      "publication": "WO2020263112A1",
+      "application": "PCT/RU2019/000455",
+      "status": "Ceased",
+      "filingDate": "2019-06-25",
+      "sourceUrl": "https://patents.google.com/patent/WO2020263112A1/en",
+      "sourceName": "Google Patents 同族记录",
+      "checkedAt": "2026-11-05",
+      "superseded": false,
+      "relationEvidence": "https://patents.google.com/patent/CN114008661A/en#familyToFamilyCitations",
+      "sourceNotes": "申请号及状态据 CN114008661A 的同族地区记录。",
+      "statusLabel": "已停止（来源 Ceased）"
     }
   ],
   "familyIds": [

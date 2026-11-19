@@ -30,3 +30,6 @@
 .visitor-stats [hidden]{display:none}
 
 @media(max-width:620px){.metrics>div:last-child{grid-column:1/-1;justify-content:center}}
+.category-filters button small{display:block;margin:2px 0 0;font-size:.9em}
+.region-badge{padding:2px 7px;border:1px solid #bdcde2;border-radius:3px;color:#2f527b}
+.patent-category-heading{flex-wrap:wrap}

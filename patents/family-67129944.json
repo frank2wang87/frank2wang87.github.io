@@ -109,6 +109,19 @@
       "checkedAt": "2026-11-05",
       "statusLabel": "已有授权版本",
       "superseded": true
+    },
+    {
+      "publication": "EP3923233B1",
+      "application": "EP20767267.6A",
+      "status": "Active",
+      "filingDate": "2020-02-27",
+      "sourceUrl": "https://patents.google.com/patent/EP3923233B1/en",
+      "sourceName": "Google Patents 同族记录",
+      "checkedAt": "2026-11-05",
+      "superseded": false,
+      "relationEvidence": "https://patents.google.com/patent/CN109993707A/en#familyToFamilyCitations",
+      "sourceNotes": "申请号及状态据 CN109993707A 的同族地区记录。",
+      "statusLabel": "有效授权（来源 Active）"
     }
   ],
   "familyIds": [

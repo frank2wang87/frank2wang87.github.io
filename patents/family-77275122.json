@@ -137,6 +137,28 @@
       "checkedAt": "2026-11-05",
       "statusLabel": "已有授权版本",
       "superseded": true
+    },
+    {
+      "publication": "EP4105877B1",
+      "application": "EP21757305.4A",
+      "inventors": [
+        "Yipeng MA",
+        "Tao Wang",
+        "Jingyang PENG",
+        "Fenglong SONG"
+      ],
+      "assignees": [
+        "Huawei Technologies Co Ltd"
+      ],
+      "status": "Active",
+      "filingDate": "2021-02-19",
+      "priorityDate": "2020-02-19",
+      "publicationDate": "2026-04-01",
+      "sourceUrl": "https://patents.google.com/patent/EP4105877B1/en",
+      "sourceName": "Google Patents",
+      "checkedAt": "2026-11-19",
+      "superseded": false,
+      "statusLabel": "有效授权（来源 Active）"
     }
   ],
   "familyIds": [

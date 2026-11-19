@@ -9,8 +9,8 @@ function render(){
  const query=$('search').value.trim().toLowerCase(),year=$('year').value,sort=$('sort').value,status=$('patent-status').value;
  const rows=visibleRecords().filter(p=>(activeType==='all'||p.type===activeType)&&(year==='all'||(p.year||'unknown')===year)&&(p.type!=='patent'||status==='all'||p.status===status)&&(p.type!=='patent'||activeCategory==='all'||p.category===activeCategory)&&(!query||recordSearchText(p).includes(query)));
  rows.sort(sort==='citations'?(a,b)=>citationNumber(b)-citationNumber(a)||dateOrder(a,b):sort==='title'?(a,b)=>a.title.localeCompare(b.title):dateOrder);
- $('result-count').textContent=`显示 ${rows.length} 条记录`;
- $('publication-list').innerHTML=rows.length?(activeType==='patent'&&activeCategory==='all'?PATENT_CATEGORIES.map(category=>{const group=rows.filter(p=>p.category===category);return group.length?`<section class="patent-category-section"><h3 class="patent-category-heading">${escapeHtml(category)}<span>${group.length} 组</span></h3>${group.map(recordMarkup).join('')}</section>`:'';}).join(''):rows.map(recordMarkup).join('')):'<p class="empty">没有找到匹配的记录。试试其他关键词、状态或年份。</p>';
+ $('result-count').textContent=researchCount(rows);
+ $('publication-list').innerHTML=rows.length?(activeType==='patent'&&activeCategory==='all'?PATENT_CATEGORIES.map(category=>{const group=rows.filter(p=>p.category===category);return group.length?`<section class="patent-category-section"><h3 class="patent-category-heading">${escapeHtml(category)}<span>${patentRegionSummary(group)}</span></h3>${group.map(recordMarkup).join('')}</section>`:'';}).join(''):rows.map(recordMarkup).join('')):'<p class="empty">没有找到匹配的记录。试试其他关键词、状态或年份。</p>';
  $('patent-status-wrap').hidden=activeType==='paper';
  $('category-filters').hidden=activeType==='paper';
  document.querySelectorAll('[data-category]').forEach(b=>{b.classList.toggle('active',b.dataset.category===activeCategory);b.setAttribute('aria-pressed',String(b.dataset.category===activeCategory));});
@@ -38,8 +38,13 @@ async function loadRecords(){
  p.publications=[...papers,...patents];profile=p;
  if(!p.metrics){const n=$('scholar-metrics');if(n)n.hidden=true;}
  const rows=visibleRecords();$('record-count').textContent=rows.length;$('citation-count').textContent=Number(p.metrics?.citations||0).toLocaleString('en-US');$('h-index').textContent=p.metrics?.hIndex||'—';
- for(const [id,type] of [['paper-n','paper'],['patent-n','patent'],['all-n','all']])$(id).textContent=type==='all'?rows.length:rows.filter(r=>r.type===type).length;
- for(const [i,category] of PATENT_CATEGORIES.entries())$('category-count-'+i).textContent=rows.filter(r=>r.type==='patent'&&r.category===category).length;
+ const patentTotal = new Set(rows.filter(row=>row.type==='patent').flatMap(row=>patentApplications(row).map(application=>application.key))).size;
+ const paperTotal = rows.filter(row=>row.type==='paper').length;
+ $('patent-n').textContent = patentTotal;
+ $('paper-n').textContent = paperTotal;
+ $('all-n').textContent = paperTotal + patentTotal;
+ $('record-count').textContent = paperTotal + patentTotal;
+ for(const [i,category] of PATENT_CATEGORIES.entries())$('category-count-'+i).textContent=patentRegionSummary(rows.filter(r=>r.type==='patent'&&r.category===category));
  const years=[...new Set(rows.map(r=>r.year).filter(Boolean))].sort((a,b)=>b-a);years.forEach(y=>$('year').add(new Option(y,y)));if(rows.some(r=>!r.year))$('year').add(new Option('年份未列出','unknown'));
  chooseType(activeType);
 }
