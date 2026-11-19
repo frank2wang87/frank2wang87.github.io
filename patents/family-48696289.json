@@ -48,7 +48,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "国际申请程序已终止（Ceased）",
-      "superseded": false
+      "superseded": false,
+      "title": "Multi-granularity parallel fft calculation device"
     },
     {
       "publication": "US9176929B2",
@@ -73,7 +74,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "授权有效（来源 Active）",
-      "superseded": false
+      "superseded": false,
+      "title": "Multi-granularity parallel FFT computation device"
     }
   ],
   "familyIds": [

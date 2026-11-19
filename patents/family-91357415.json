@@ -40,7 +40,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "国际申请程序已终止（Ceased）",
-      "superseded": false
+      "superseded": false,
+      "title": "Memory access control method and apparatus, and computing device and computing device cluster"
     },
     {
       "publication": "CN118170697A",
@@ -81,7 +82,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-19",
       "superseded": false,
-      "statusLabel": "申请公开（来源 Pending）"
+      "statusLabel": "申请公开（来源 Pending）",
+      "title": "Memory access control method and apparatus, computing device, and computing device cluster"
     },
     {
       "publication": "EP4625187A1",
@@ -101,7 +103,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-19",
       "superseded": false,
-      "statusLabel": "申请公开（来源 Pending）"
+      "statusLabel": "申请公开（来源 Pending）",
+      "title": "Memory access control method and apparatus, and computing device and computing device cluster"
     }
   ],
   "familyIds": [

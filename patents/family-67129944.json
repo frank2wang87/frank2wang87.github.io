@@ -42,7 +42,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "授权有效（来源 Active）",
-      "superseded": false
+      "superseded": false,
+      "title": "Image denoising method and apparatus"
     },
     {
       "publication": "WO2020177607A1",
@@ -64,7 +65,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "国际申请程序已终止（Ceased）",
-      "superseded": false
+      "superseded": false,
+      "title": "Image denoising method and apparatus"
     },
     {
       "publication": "CN109993707B",
@@ -121,7 +123,8 @@
       "superseded": false,
       "relationEvidence": "https://patents.google.com/patent/CN109993707A/en#familyToFamilyCitations",
       "sourceNotes": "申请号及状态据 CN109993707A 的同族地区记录。",
-      "statusLabel": "有效授权（来源 Active）"
+      "statusLabel": "有效授权（来源 Active）",
+      "title": "Image denoising method and apparatus"
     }
   ],
   "familyIds": [

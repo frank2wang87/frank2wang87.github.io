@@ -46,7 +46,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "国际申请程序已终止（Ceased）",
-      "superseded": false
+      "superseded": false,
+      "title": "Multi-granularity parallel fft butterfly calculation method and corresponding device"
     },
     {
       "publication": "US9262378B2",
@@ -70,7 +71,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "授权有效（来源 Active）",
-      "superseded": false
+      "superseded": false,
+      "title": "Methods and devices for multi-granularity parallel FFT butterfly computation"
     }
   ],
   "familyIds": [

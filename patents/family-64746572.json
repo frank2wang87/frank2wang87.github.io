@@ -62,7 +62,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "授权有效（来源 Active）",
-      "superseded": false
+      "superseded": false,
+      "title": "Image processor and method"
     },
     {
       "publication": "CN120612222A",
@@ -171,7 +172,8 @@
       "superseded": false,
       "relationEvidence": "https://patents.google.com/patent/CN113228094A/en#familyToFamilyCitations",
       "sourceNotes": "申请号及状态据 CN113228094A 的同族地区记录。",
-      "statusLabel": "有效授权（来源 Active）"
+      "statusLabel": "有效授权（来源 Active）",
+      "title": "Image processor"
     },
     {
       "publication": "WO2020126023A1",
@@ -184,7 +186,8 @@
       "superseded": false,
       "relationEvidence": "https://patents.google.com/patent/CN113228094A/en#familyToFamilyCitations",
       "sourceNotes": "申请号及状态据 CN113228094A 的同族地区记录。",
-      "statusLabel": "已停止（来源 Ceased）"
+      "statusLabel": "已停止（来源 Ceased）",
+      "title": "Image processor"
     }
   ],
   "familyIds": [

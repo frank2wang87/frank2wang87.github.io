@@ -44,7 +44,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "已有授权版本",
-      "superseded": true
+      "superseded": true,
+      "title": "Image Processing Method And Apparatus And Computer Program Product For The Same"
     },
     {
       "publication": "US12056793B2",
@@ -67,7 +68,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "授权有效（来源 Active）",
-      "superseded": false
+      "superseded": false,
+      "title": "Image processing method and apparatus and computer program product for the same"
     },
     {
       "publication": "CN114008661B",
@@ -126,7 +128,8 @@
       "superseded": false,
       "relationEvidence": "https://patents.google.com/patent/CN114008661A/en#familyToFamilyCitations",
       "sourceNotes": "申请号及状态据 CN114008661A 的同族地区记录。",
-      "statusLabel": "有效授权（来源 Active）"
+      "statusLabel": "有效授权（来源 Active）",
+      "title": "Image processing method and apparatus and computer program product for the same"
     },
     {
       "publication": "WO2020263112A1",
@@ -139,7 +142,8 @@
       "superseded": false,
       "relationEvidence": "https://patents.google.com/patent/CN114008661A/en#familyToFamilyCitations",
       "sourceNotes": "申请号及状态据 CN114008661A 的同族地区记录。",
-      "statusLabel": "已停止（来源 Ceased）"
+      "statusLabel": "已停止（来源 Ceased）",
+      "title": "Image processing method and apparatus and computer program product for the same"
     }
   ],
   "familyIds": [

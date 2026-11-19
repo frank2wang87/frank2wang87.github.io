@@ -8,7 +8,8 @@ const optionalJson=(f,fallback)=>fs.existsSync(f)?JSON.parse(fs.readFileSync(f,'
 const index=optionalJson('patents/index.json',{files:[]});
 const patents=index.files.filter(f=>fs.existsSync(f)).map(f=>JSON.parse(fs.readFileSync(f,'utf8')));
 const papers=optionalJson('publications/index.json',{files:[]}).files.filter(f=>fs.existsSync(f)).map(f=>JSON.parse(fs.readFileSync(f,'utf8'))).filter(p=>p.hidden!==true);
-const rows=[...papers,...patents.filter(p=>p.status!=='excluded')];
+context.patents=patents;
+const rows=[...papers,...vm.runInContext("patents.filter(p=>p.status!=='excluded').flatMap(patentDisplayRecords)",context)];
 context.rows=rows;
 const markup=vm.runInContext('rows.sort(dateOrder).map(recordMarkup).join("")',context);
 let html=fs.readFileSync('index.html','utf8');
@@ -33,7 +34,7 @@ for (const [i, summary] of categorySummaries.entries()) {
 const resultLabel = vm.runInContext('researchCount(rows)', context);
 html = html.replace(/(<p id="result-count"[^>]*>)[^<]*/, (_, prefix) => prefix + resultLabel);
 html = html.replace('论文 + 专利同族','论文 + 各地区专利申请');
-html = html.replace(/<p class="patent-help">[^<]*<\/p>/, '<p class="patent-help">按独立申请号计件，中国申请归国内，美国、欧洲及 PCT 国际申请归海外。同一申请的公开与授权版本计为一件，分案申请分别计件。列表按同族展示，展开可查看各地区申请。</p>');
+html = html.replace(/<p class="patent-help">[^<]*<\/p>/, '<p class="patent-help">按独立申请逐件展示。同一技术先列中文国内专利，再分别列出英文海外专利，标明地区、申请号和各自状态。同一申请的公开与授权版本计为一件，分案申请分别计件。</p>');
 // Render metrics into the published HTML as well as the browser view.
 for (const [id, value] of [['citation-count', Number(profile.metrics?.citations || 0).toLocaleString('en-US')], ['h-index', profile.metrics?.hIndex ?? '—']]) {
   html = html.replace(new RegExp(`(id="${id}">)[^<]*`), (_, prefix) => prefix + value);

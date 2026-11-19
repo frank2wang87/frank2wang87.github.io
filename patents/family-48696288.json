@@ -45,7 +45,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "国际申请程序已终止（Ceased）",
-      "superseded": false
+      "superseded": false,
+      "title": "Parallel bit order reversing device and method"
     },
     {
       "publication": "US9268744B2",
@@ -69,7 +70,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "授权有效（来源 Active）",
-      "superseded": false
+      "superseded": false,
+      "title": "Parallel bit reversal devices and methods"
     }
   ],
   "familyIds": [

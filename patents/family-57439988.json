@@ -42,7 +42,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "授权有效（来源 Active）",
-      "superseded": false
+      "superseded": false,
+      "title": "Memory access system and method"
     },
     {
       "publication": "WO2016192045A1",
@@ -64,7 +65,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "国际申请程序已终止（Ceased）",
-      "superseded": false
+      "superseded": false,
+      "title": "Access system and method for data storage"
     },
     {
       "publication": "CN107710172B",
@@ -121,7 +123,8 @@
       "superseded": false,
       "relationEvidence": "https://patents.google.com/patent/CN107710172A/en#familyToFamilyCitations",
       "sourceNotes": "申请号及状态据 CN107710172A 的同族地区记录。",
-      "statusLabel": "有效授权（来源 Active）"
+      "statusLabel": "有效授权（来源 Active）",
+      "title": "Access system and method for data storage"
     }
   ],
   "familyIds": [

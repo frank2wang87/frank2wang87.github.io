@@ -48,7 +48,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "已有授权版本",
-      "superseded": true
+      "superseded": true,
+      "title": "Method for Accessing Memory of Multi-Core System, Related Apparatus, System, and Storage Medium"
     },
     {
       "publication": "US11294675B2",
@@ -73,7 +74,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "授权有效（来源 Active）",
-      "superseded": false
+      "superseded": false,
+      "title": "Writing prefetched data into intra-core caches of cores identified by prefetching instructions"
     },
     {
       "publication": "WO2018205117A1",
@@ -98,7 +100,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "国际申请程序已终止（Ceased）",
-      "superseded": false
+      "superseded": false,
+      "title": "Memory access method for multi-core system, and related apparatus, system and storage medium"
     },
     {
       "publication": "CN109219805B",

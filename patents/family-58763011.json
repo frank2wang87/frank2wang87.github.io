@@ -42,7 +42,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "已有授权版本",
-      "superseded": true
+      "superseded": true,
+      "title": "Method and system for generating accelerator program"
     },
     {
       "publication": "US10372429B2",
@@ -64,7 +65,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "授权有效（来源 Active）",
-      "superseded": false
+      "superseded": false,
+      "title": "Method and system for generating accelerator program"
     },
     {
       "publication": "WO2017088665A1",
@@ -86,7 +88,8 @@
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05",
       "statusLabel": "国际申请程序已终止（Ceased）",
-      "superseded": false
+      "superseded": false,
+      "title": "Program generation method and system for accelerator"
     },
     {
       "publication": "CN107250982B",
@@ -143,7 +146,8 @@
       "superseded": false,
       "relationEvidence": "https://patents.google.com/patent/CN107250982A/en#familyToFamilyCitations",
       "sourceNotes": "申请号及状态据 CN107250982A 的同族地区记录。",
-      "statusLabel": "有效授权（来源 Active）"
+      "statusLabel": "有效授权（来源 Active）",
+      "title": "Program generation method and system for accelerator"
     }
   ],
   "familyIds": [

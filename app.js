@@ -8,7 +8,7 @@ function render(){
  if(!profile)return;
  const query=$('search').value.trim().toLowerCase(),year=$('year').value,sort=$('sort').value,status=$('patent-status').value;
  const rows=visibleRecords().filter(p=>(activeType==='all'||p.type===activeType)&&(year==='all'||(p.year||'unknown')===year)&&(p.type!=='patent'||status==='all'||p.status===status)&&(p.type!=='patent'||activeCategory==='all'||p.category===activeCategory)&&(!query||recordSearchText(p).includes(query)));
- rows.sort(sort==='citations'?(a,b)=>citationNumber(b)-citationNumber(a)||dateOrder(a,b):sort==='title'?(a,b)=>a.title.localeCompare(b.title):dateOrder);
+ rows.sort(sort==='citations'?(a,b)=>citationNumber(b)-citationNumber(a)||dateOrder(a,b):sort==='title'?titleOrder:dateOrder);
  $('result-count').textContent=researchCount(rows);
  $('publication-list').innerHTML=rows.length?(activeType==='patent'&&activeCategory==='all'?PATENT_CATEGORIES.map(category=>{const group=rows.filter(p=>p.category===category);return group.length?`<section class="patent-category-section"><h3 class="patent-category-heading">${escapeHtml(category)}<span>${patentRegionSummary(group)}</span></h3>${group.map(recordMarkup).join('')}</section>`:'';}).join(''):rows.map(recordMarkup).join('')):'<p class="empty">没有找到匹配的记录。试试其他关键词、状态或年份。</p>';
  $('patent-status-wrap').hidden=activeType==='paper';
@@ -35,7 +35,7 @@ async function loadRecords(){
  if(!paperFiles.every(f=>/^publications\/paper-\d+\.json$/.test(f)))throw Error('Invalid paper index');
  const papers=(await Promise.all(paperFiles.map(f=>readJson(f,true)))).filter(Boolean).filter(p=>p.hidden!==true);
  if(patents.some(p=>!p.id||!Array.isArray(p.members)||typeof p.title!=='string'))throw Error('Invalid patent data');
- p.publications=[...papers,...patents];profile=p;
+ p.publications=[...papers,...patents.filter(p=>p.status!=='excluded').flatMap(patentDisplayRecords)];profile=p;
  if(!p.metrics){const n=$('scholar-metrics');if(n)n.hidden=true;}
  const rows=visibleRecords();$('record-count').textContent=rows.length;$('citation-count').textContent=Number(p.metrics?.citations||0).toLocaleString('en-US');$('h-index').textContent=p.metrics?.hIndex||'—';
  const patentTotal = new Set(rows.filter(row=>row.type==='patent').flatMap(row=>patentApplications(row).map(application=>application.key))).size;
