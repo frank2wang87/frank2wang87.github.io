@@ -1,12 +1,12 @@
 {
   "checkedAt": "2026-11-05",
   "summary": {
-    "userInputRows": 153,
-    "scholarInputRows": 18,
-    "verifiedPublicationRecords": 171,
-    "matchedInventorRows": 171,
-    "consolidatedFamilies": 73,
-    "displayedFamilies": 71,
+    "userInputRows": 127,
+    "scholarInputRows": 17,
+    "verifiedPublicationRecords": 144,
+    "matchedInventorRows": 144,
+    "consolidatedFamilies": 60,
+    "displayedFamilies": 58,
     "excludedFamilies": 2
   },
   "method": "依据同申请号、来源同族 ID、同族国家链接及明确的分案说明合并，不仅凭标题或姓名去重。每个地区的专利状态分别保留。",
@@ -30,25 +30,6 @@
       ],
       "verifiedStatus": "Active",
       "sourceUrl": "https://eureka.patsnap.com/patent/CN116205998B",
-      "sourceName": "Patsnap Eureka",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "华为技术有限公司",
-      "publication": "CN122778407A",
-      "application": "CN202610722257.0",
-      "suppliedDate": "2022-3-9",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-87937196",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛"
-      ],
-      "verifiedStatus": "Pending",
-      "sourceUrl": "https://eureka.patsnap.com/patent/CN122778407A",
       "sourceName": "Patsnap Eureka",
       "checkedAt": "2026-11-05"
     },
@@ -149,25 +130,6 @@
     {
       "group": "Huawei",
       "applicant": "华为技术有限公司",
-      "publication": "CN119378023B",
-      "application": "CN202310935441.X",
-      "suppliedDate": "2023-7-27",
-      "suppliedType": "发明授权",
-      "source": "user",
-      "family": "family-94331407",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛"
-      ],
-      "verifiedStatus": "Active",
-      "sourceUrl": "https://patents.google.com/patent/CN119378023B/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "华为技术有限公司",
       "publication": "CN117688195B",
       "application": "CN202211049479.9",
       "suppliedDate": "2022-8-30",
@@ -185,25 +147,6 @@
       ],
       "verifiedStatus": "Active",
       "sourceUrl": "https://patents.google.com/patent/CN117688195B/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "华为技术有限公司",
-      "publication": "CN116776339B",
-      "application": "CN202210236069.9",
-      "suppliedDate": "2022-3-9",
-      "suppliedType": "发明授权",
-      "source": "user",
-      "family": "family-87937196",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛"
-      ],
-      "verifiedStatus": "Active",
-      "sourceUrl": "https://patents.google.com/patent/CN116776339B/zh",
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05"
     },
@@ -385,44 +328,6 @@
       ],
       "verifiedStatus": "Pending",
       "sourceUrl": "https://patents.google.com/patent/CN121508542A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "Huawei Technologies Co.,  Ltd.",
-      "publication": "WO2026025851A1",
-      "application": "WOCN25076394",
-      "suppliedDate": "2025-2-8",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-98486413",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛"
-      ],
-      "verifiedStatus": "Pending",
-      "sourceUrl": "https://patents.google.com/patent/WO2026025851A1/en",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "华为技术有限公司",
-      "publication": "CN121413015A",
-      "application": "CN202411017693.5",
-      "suppliedDate": "2024-7-27",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-98486413",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛"
-      ],
-      "verifiedStatus": "Pending",
-      "sourceUrl": "https://patents.google.com/patent/CN121413015A/zh",
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05"
     },
@@ -690,44 +595,6 @@
     },
     {
       "group": "Huawei",
-      "applicant": "Huawei Technologies Co.,  Ltd.",
-      "publication": "WO2025020494A1",
-      "application": "WOCN24075760",
-      "suppliedDate": "2024-2-4",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-94331407",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛"
-      ],
-      "verifiedStatus": "Ceased",
-      "sourceUrl": "https://patents.google.com/patent/WO2025020494A1/en",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "华为技术有限公司",
-      "publication": "CN119378023A",
-      "application": "CN202310935441.X",
-      "suppliedDate": "2023-7-27",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-94331407",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛"
-      ],
-      "verifiedStatus": "Granted",
-      "sourceUrl": "https://patents.google.com/patent/CN119378023A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
       "applicant": "华为技术有限公司",
       "publication": "CN119336979A",
       "application": "CN202310912381.X",
@@ -769,33 +636,6 @@
       ],
       "verifiedStatus": "Granted",
       "sourceUrl": "https://patents.google.com/patent/CN119324944A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "华为技术有限公司",
-      "publication": "CN118740302A",
-      "application": "CN202310348027.9",
-      "suppliedDate": "2023-3-28",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-92861213",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "孔维宾",
-        "邱坚武",
-        "邓晨辉",
-        "叶瑞庭",
-        "占丽娟",
-        "张宏斌",
-        "汪涛",
-        "李宝同",
-        "邹木杰"
-      ],
-      "verifiedStatus": "Pending",
-      "sourceUrl": "https://patents.google.com/patent/CN118740302A/zh",
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05"
     },
@@ -906,96 +746,6 @@
       ],
       "verifiedStatus": "Active",
       "sourceUrl": "https://patents.google.com/patent/CN113284054B/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "Huawei Technologies Co.,  Ltd.",
-      "publication": "WO2024119978A1",
-      "application": "WOCN23121076",
-      "suppliedDate": "2023-9-25",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-91347677",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "王辰昱",
-        "万荣飞",
-        "张宇",
-        "严敏瑞",
-        "汪涛",
-        "郑子勇",
-        "金意儿"
-      ],
-      "verifiedStatus": "Ceased",
-      "sourceUrl": "https://patents.google.com/patent/WO2024119978A1/en",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "Huawei Technologies Co.,  Ltd.",
-      "publication": "WO2024120014A1",
-      "application": "WOCN23124546",
-      "suppliedDate": "2023-10-13",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-91357415",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛",
-        "季金星"
-      ],
-      "verifiedStatus": "Ceased",
-      "sourceUrl": "https://patents.google.com/patent/WO2024120014A1/en",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "华为技术有限公司",
-      "publication": "CN118170697A",
-      "application": "CN202211577686.1",
-      "suppliedDate": "2022-12-9",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-91357415",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛",
-        "季金星"
-      ],
-      "verifiedStatus": "Pending",
-      "sourceUrl": "https://patents.google.com/patent/CN118170697A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "华为技术有限公司",
-      "publication": "CN118171276A",
-      "application": "CN202310382703.4",
-      "suppliedDate": "2023-3-31",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-91347677",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "王辰昱",
-        "万荣飞",
-        "张宇",
-        "严敏瑞",
-        "汪涛",
-        "郑子勇",
-        "金意儿"
-      ],
-      "verifiedStatus": "Pending",
-      "sourceUrl": "https://patents.google.com/patent/CN118171276A/zh",
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05"
     },
@@ -1165,44 +915,6 @@
     {
       "group": "Huawei",
       "applicant": "华为技术有限公司",
-      "publication": "CN116776339A",
-      "application": "CN202210236069.9",
-      "suppliedDate": "2022-3-9",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-87937196",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛"
-      ],
-      "verifiedStatus": "Granted",
-      "sourceUrl": "https://patents.google.com/patent/CN116776339A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "Huawei Technologies Co.,  Ltd.",
-      "publication": "WO2023169204A1",
-      "application": "WOCN23077342",
-      "suppliedDate": "2023-2-21",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-87937196",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "汪涛"
-      ],
-      "verifiedStatus": "Ceased",
-      "sourceUrl": "https://patents.google.com/patent/WO2023169204A1/en",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "华为技术有限公司",
       "publication": "CN116205998A",
       "application": "CN202111453149.1",
       "suppliedDate": "2021-11-30",
@@ -1240,28 +952,6 @@
       ],
       "verifiedStatus": "Active",
       "sourceUrl": "https://patents.google.com/patent/CN109993707B/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Huawei",
-      "applicant": "华为技术有限公司",
-      "publication": "CN115884508A",
-      "application": "CN202110932163.3",
-      "suppliedDate": "2021-8-13",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-85762183",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "朱文学",
-        "丁利斌",
-        "郭翔",
-        "汪涛"
-      ],
-      "verifiedStatus": "Pending",
-      "sourceUrl": "https://patents.google.com/patent/CN115884508A/zh",
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05"
     },
@@ -2462,251 +2152,6 @@
     {
       "group": "CASIA",
       "applicant": "中国科学院自动化研究所",
-      "publication": "CN116884391B",
-      "application": "CN202311144835.X",
-      "suppliedDate": "2023-9-6",
-      "suppliedType": "发明授权",
-      "source": "user",
-      "family": "family-88272014",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "易江燕",
-        "周俊佐",
-        "陶建华",
-        "汪涛"
-      ],
-      "verifiedStatus": "Active",
-      "sourceUrl": "https://patents.google.com/patent/CN116884391B/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "中国科学院自动化研究所",
-      "publication": "CN116884391A",
-      "application": "CN202311144835.X",
-      "suppliedDate": "2023-9-6",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-88272014",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "易江燕",
-        "周俊佐",
-        "陶建华",
-        "汪涛"
-      ],
-      "verifiedStatus": "Granted",
-      "sourceUrl": "https://patents.google.com/patent/CN116884391A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "中国科学院自动化研究所",
-      "publication": "CN116364055B",
-      "application": "CN202310634393.0",
-      "suppliedDate": "2023-5-31",
-      "suppliedType": "发明授权",
-      "source": "user",
-      "family": "family-86909406",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "陶建华",
-        "任勇",
-        "易江燕",
-        "汪涛"
-      ],
-      "verifiedStatus": "Active",
-      "sourceUrl": "https://patents.google.com/patent/CN116364055B/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "中国科学院自动化研究所",
-      "publication": "CN116364055A",
-      "application": "CN202310634393.0",
-      "suppliedDate": "2023-5-31",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-86909406",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "陶建华",
-        "任勇",
-        "易江燕",
-        "汪涛"
-      ],
-      "verifiedStatus": "Granted",
-      "sourceUrl": "https://patents.google.com/patent/CN116364055A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "腾讯科技(深圳)有限公司; 中国科学院自动化研究所",
-      "publication": "CN115798453A",
-      "application": "CN202111059801.1",
-      "suppliedDate": "2021-9-10",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-85417046",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "陶建华",
-        "汪涛",
-        "傅睿博",
-        "易江燕",
-        "翁超"
-      ],
-      "verifiedStatus": "Pending",
-      "sourceUrl": "https://patents.google.com/patent/CN115798453A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "中国科学院自动化研究所",
-      "publication": "CN114495898B",
-      "application": "CN202210395964.5",
-      "suppliedDate": "2022-4-15",
-      "suppliedType": "发明授权",
-      "source": "user",
-      "family": "family-81489542",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "陶建华",
-        "汪涛",
-        "易江燕",
-        "傅睿博",
-        "张震"
-      ],
-      "verifiedStatus": "Active",
-      "sourceUrl": "https://patents.google.com/patent/CN114495898B/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "中国科学院自动化研究所",
-      "publication": "CN114495898A",
-      "application": "CN202210395964.5",
-      "suppliedDate": "2022-4-15",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-81489542",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "陶建华",
-        "汪涛",
-        "易江燕",
-        "傅睿博",
-        "张震"
-      ],
-      "verifiedStatus": "Granted",
-      "sourceUrl": "https://patents.google.com/patent/CN114495898A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "中国科学院自动化研究所",
-      "publication": "CN113724686B",
-      "application": "CN202111292710.2",
-      "suppliedDate": "2021-11-3",
-      "suppliedType": "发明授权",
-      "source": "user",
-      "family": "family-78686661",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "陶建华",
-        "汪涛",
-        "易江燕",
-        "傅睿博"
-      ],
-      "verifiedStatus": "Active",
-      "sourceUrl": "https://patents.google.com/patent/CN113724686B/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "中国科学院自动化研究所",
-      "publication": "CN113724686A",
-      "application": "CN202111292710.2",
-      "suppliedDate": "2021-11-3",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-78686661",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "陶建华",
-        "汪涛",
-        "易江燕",
-        "傅睿博"
-      ],
-      "verifiedStatus": "Granted",
-      "sourceUrl": "https://patents.google.com/patent/CN113724686A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "中国科学院自动化研究所",
-      "publication": "CN113284513B",
-      "application": "CN202110841276.2",
-      "suppliedDate": "2021-7-26",
-      "suppliedType": "发明授权",
-      "source": "user",
-      "family": "family-77287248",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "陶建华",
-        "汪涛",
-        "易江燕",
-        "傅睿博"
-      ],
-      "verifiedStatus": "Active",
-      "sourceUrl": "https://patents.google.com/patent/CN113284513B/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "中国科学院自动化研究所",
-      "publication": "CN113284513A",
-      "application": "CN202110841276.2",
-      "suppliedDate": "2021-7-26",
-      "suppliedType": "发明申请",
-      "source": "user",
-      "family": "family-77287248",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "陶建华",
-        "汪涛",
-        "易江燕",
-        "傅睿博"
-      ],
-      "verifiedStatus": "Granted",
-      "sourceUrl": "https://patents.google.com/patent/CN113284513A/zh",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "CASIA",
-      "applicant": "中国科学院自动化研究所",
       "publication": "CN103227622B",
       "application": "CN201310139302.2",
       "suppliedDate": "2013-4-19",
@@ -3525,27 +2970,6 @@
       ],
       "verifiedStatus": "Active",
       "sourceUrl": "https://patents.google.com/patent/US9268744B2/en",
-      "sourceName": "Google Patents",
-      "checkedAt": "2026-11-05"
-    },
-    {
-      "group": "Scholar",
-      "publication": "US11462207B1",
-      "application": "17737666",
-      "scholarId": "QIy6O2EAAAAJ:HDshCWvjkbEC",
-      "title": "Method and apparatus for editing audio, electronic device and storage medium",
-      "source": "scholar",
-      "family": "family-78686661",
-      "included": true,
-      "inventorNameMatched": true,
-      "inventors": [
-        "Jianhua Tao",
-        "Tao Wang",
-        "Jiangyan Yi",
-        "Ruibo Fu"
-      ],
-      "verifiedStatus": "Active",
-      "sourceUrl": "https://patents.google.com/patent/US11462207B1/en",
       "sourceName": "Google Patents",
       "checkedAt": "2026-11-05"
     },
