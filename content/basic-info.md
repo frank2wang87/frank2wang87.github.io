@@ -10,7 +10,7 @@
 ## 个人信息
 
 姓名：汪涛
-英文姓名：Tao Wang
+英文姓名：Frank Wang
 当前机构：Huawei Technologies Co., Ltd.
 
 ## 个人介绍
