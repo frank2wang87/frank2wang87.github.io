@@ -41,7 +41,12 @@ jobs:
         continue-on-error: true
         env:
           SERPAPI_API_KEY: ${{ secrets.SERPAPI_API_KEY }}
-        run: python3 sync_scholar.py
+        run: |
+          if [ -z "$SERPAPI_API_KEY" ]; then
+            echo "::notice::Scholar sync skipped on the GitHub runner. Set the SERPAPI_API_KEY repository secret to enable cloud sync."
+          else
+            python3 sync_scholar.py
+          fi
 
       - name: Generate the page and management lists
         run: node build.mjs

@@ -489,7 +489,7 @@
   "experience": [],
   "patents": [],
   "metrics": {
-    "citations": "1582",
+    "citations": "1583",
     "hIndex": "18",
     "i10Index": "20"
   },
@@ -862,10 +862,10 @@
   ],
   "patentIndex": "patents/index.json",
   "metricsSync": {
-    "status": "error",
-    "attemptedAt": "2026-11-22T02:24:23+00:00",
-    "succeededAt": "2026-11-18T01:20:09+00:00",
-    "error": "HTTP Error 403: Forbidden",
-    "source": "google-scholar"
+    "status": "success",
+    "attemptedAt": "2026-11-23T01:01:58+00:00",
+    "succeededAt": "2026-11-23T01:01:58+00:00",
+    "source": "google-scholar",
+    "error": ""
   }
 }

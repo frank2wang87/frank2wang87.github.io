@@ -1,4 +1,4 @@
-"""Refresh all-time Scholar metrics, keeping the last snapshot on failure."""
+"""Refresh all-time Scholar metrics when the public totals change."""
 
 import json
 import os
@@ -95,46 +95,53 @@ def fetch_serpapi_metrics(author, api_key):
         raise ValueError(f'Scholar fallback failed ({detail})') from None
 
 
+def fetch_metrics(scholar_url, api_key):
+    url = urlparse(scholar_url)
+    if url.scheme != 'https' or url.hostname != 'scholar.google.com':
+        raise ValueError('Unexpected Scholar source')
+    author = parse_qs(url.query).get('user', [''])[0]
+    if not re.fullmatch(r'[A-Za-z0-9_-]+', author):
+        raise ValueError('Missing Scholar author ID')
+    if api_key:
+        return fetch_serpapi_metrics(author, api_key), 'serpapi'
+
+    request = Request(
+        f'https://scholar.google.com/citations?user={author}&hl=en',
+        headers={'User-Agent': 'Mozilla/5.0', 'Accept-Language': 'en'},
+    )
+    with urlopen(request, timeout=30) as response:
+        return parse_metrics(response.read().decode('utf-8')), 'google-scholar'
+
+
 def main():
     path = Path('profile.json')
     profile = json.loads(path.read_text(encoding='utf-8'))
-    now = datetime.now(timezone.utc).isoformat(timespec='seconds')
-    previous = profile.get('metricsSync', {})
-    sync = {**previous, 'attemptedAt': now}
+    api_key = os.environ.get('SERPAPI_API_KEY', '').strip()
     try:
-        source = profile['scholarUrl']
-        url = urlparse(source)
-        if url.scheme != 'https' or url.hostname != 'scholar.google.com':
-            raise ValueError('Unexpected Scholar source')
-        author = parse_qs(url.query).get('user', [''])[0]
-        if not re.fullmatch(r'[A-Za-z0-9_-]+', author):
-            raise ValueError('Missing Scholar author ID')
-        request = Request(
-            f'https://scholar.google.com/citations?user={author}&hl=en',
-            headers={'User-Agent': 'Mozilla/5.0', 'Accept-Language': 'en'},
-        )
-        source = 'google-scholar'
-        try:
-            with urlopen(request, timeout=30) as response:
-                metrics = parse_metrics(response.read().decode('utf-8'))
-        except HTTPError as error:
-            api_key = os.environ.get('SERPAPI_API_KEY', '').strip()
-            if error.code not in (403, 429) or not api_key:
-                raise
-            print(f'Scholar returned HTTP {error.code}; trying the configured fallback')
-            metrics = fetch_serpapi_metrics(author, api_key)
-            source = 'serpapi'
-        profile['metrics'] = {**profile.get('metrics', {}), **metrics}
-        sync.update(status='success', succeededAt=now, source=source, error='')
-        print(f"Scholar metrics updated: citations={metrics['citations']}, h-index={metrics['hIndex']}")
+        metrics, source = fetch_metrics(profile['scholarUrl'], api_key)
     except Exception as error:
-        sync.update(status='error', error=str(error))
         print(f'::warning::Scholar sync failed; keeping last metrics: {error}')
-    profile['metricsSync'] = sync
+        return 1
+
+    previous = profile.get('metrics', {})
+    if all(str(previous.get(name)) == value for name, value in metrics.items()):
+        print(f"Scholar metrics unchanged: citations={metrics['citations']}, h-index={metrics['hIndex']}")
+        return 0
+
+    now = datetime.now(timezone.utc).isoformat(timespec='seconds')
+    profile['metrics'] = {**previous, **metrics}
+    profile['metricsSync'] = {
+        'status': 'success',
+        'attemptedAt': now,
+        'succeededAt': now,
+        'source': source,
+        'error': '',
+    }
     temporary = path.with_suffix('.json.tmp')
-    temporary.write_text(json.dumps(profile, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    temporary.write_text(json.dumps(profile, ensure_ascii=False, indent=2) + '\n', encoding='utf-8', newline='\n')
     temporary.replace(path)
-    return 0 if sync['status'] == 'success' else 1
+    print(f"Scholar metrics updated: citations={metrics['citations']}, h-index={metrics['hIndex']}")
+    return 0
 
 
 if __name__ == '__main__':
