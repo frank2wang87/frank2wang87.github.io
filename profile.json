@@ -489,7 +489,7 @@
   "experience": [],
   "patents": [],
   "metrics": {
-    "citations": "1583",
+    "citations": "1586",
     "hIndex": "18",
     "i10Index": "20"
   },
@@ -863,8 +863,8 @@
   "patentIndex": "patents/index.json",
   "metricsSync": {
     "status": "success",
-    "attemptedAt": "2026-11-23T01:01:58+00:00",
-    "succeededAt": "2026-11-23T01:01:58+00:00",
+    "attemptedAt": "2026-11-24T00:47:03+00:00",
+    "succeededAt": "2026-11-24T00:47:03+00:00",
     "source": "google-scholar",
     "error": ""
   }
